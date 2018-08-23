@@ -12,7 +12,7 @@ nyt_html = nyt_page.read()
 nyt_page.close()
 beau = bs(nyt_html, 'html.parser')
 for article in beau.findAll('div', {'class':'story-body'}):
-	if 'your favorite author here' in article.find('p', 'summary').get_text() or 'your favorite author here' in article.find('p', 'summary').get_text():
+	if 'Dostoevsky' in article.find('p', 'summary').get_text() or 'your favorite author here' in article.find('p', 'summary').get_text():
 		if article.h2.a != None:
 			email = True
 			output.write(article.h2.a.get_text() + '\n')
@@ -26,7 +26,7 @@ nyer_page.close()
 beau = bs(nyer_html, 'html.parser')
 class_name = re.compile('Card__content__')
 for article in beau.findAll('div', {'class':class_name}):
-	if 'your favorite author here' in article.find('p', re.compile('Card__dek___')).get_text() or 'your favorite author here' in article.find('p', re.compile('Card__dek___')).get_text():		
+	if 'Steinbeck' in article.find('p', re.compile('Card__dek___')).get_text() or 'your favorite author here' in article.find('p', re.compile('Card__dek___')).get_text():		
 		email = True
 		output.write(article.find('a', re.compile('Link__link___')).get_text() + '\n')
 		output.write(article.p.get_text() + '\n')
